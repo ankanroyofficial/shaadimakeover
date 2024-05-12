@@ -1,20 +1,77 @@
-import {View, Text, ImageBackground, Image, Pressable} from 'react-native';
-import React, {Fragment} from 'react';
-import {Images} from '../utils/theme/Images';
-import {globalStyles} from '../utils/theme/GlobalStyle';
-import {normalize} from '../utils/theme/Dimens';
-import {Fonts} from '../utils/theme/Fonts';
-import {Icons} from '../utils/theme/Icons';
-import {COLORS} from '../utils/theme/Colors';
 import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
+  View,
+  Text,
+  StatusBar,
+  ImageBackground,
+  Image,
+  Pressable,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
+import React, {Fragment, useState} from 'react';
+import {normalize, screenHeight} from '../../../utils/theme/Dimens';
+import {Images} from '../../../utils/theme/Images';
+import {globalStyles} from '../../../utils/theme/GlobalStyle';
+import {Icons} from '../../../utils/theme/Icons';
+import {COLORS} from '../../../utils/theme/Colors';
+import {Fonts} from '../../../utils/theme/Fonts';
+import {useNavigation} from '@react-navigation/native';
+import HeaderWithIcon from '../../../components/header/HeaderWithIcon';
+import BackButtonWithName from '../../../components/header/BackButtonWithName';
 
-export default function MakeupArtistComponent() {
+export default function AllMakeupArtist() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const topArtist = [
+    {
+      name: 'Namrata Soni',
+      image: Images.artist1,
+      isFav: false,
+      rating: 3,
+    },
+    {
+      name: 'Puneet Solanki',
+      image: Images.artist2,
+      isFav: true,
+      rating: 5,
+    },
+    {
+      name: 'Arti Nayar',
+      image: Images.artist3,
+      isFav: true,
+      rating: 4,
+    },
+
+    {
+      name: 'Puneet Solanki',
+      image: Images.artist2,
+      isFav: true,
+      rating: 5,
+    },
+    {
+      name: 'Arti Nayar',
+      image: Images.artist3,
+      isFav: true,
+      rating: 4,
+    },
+
+    {
+      name: 'Namrata Soni',
+      image: Images.artist1,
+      isFav: false,
+      rating: 3,
+    },
+    {
+      name: 'Arti Nayar',
+      image: Images.artist3,
+      isFav: true,
+      rating: 4,
+    },
+    {
+      name: 'Puneet Solanki',
+      image: Images.artist2,
+      isFav: false,
+      rating: 5,
+    },
     {
       name: 'Namrata Soni',
       image: Images.artist1,
@@ -159,53 +216,35 @@ export default function MakeupArtistComponent() {
     );
   };
   return (
-    <View
-      style={{
-        width: '100%',
-        paddingHorizontal: globalStyles.paddingHorizantal,
-        marginBottom: normalize(8),
-      }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: normalize(10),
-        }}>
-        <Text
+    <View style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
+      <StatusBar
+        backgroundColor={COLORS.white}
+        barStyle={'dark-content'}
+        translucent={false}
+      />
+      <BackButtonWithName title="Makeup Artist" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
           style={{
-            fontSize: normalize(13),
-            lineHeight: normalize(13) * 1.4,
-            fontFamily: Fonts.PoppinsMedium,
-            color: COLORS.textColor,
+            width: '100%',
+            paddingHorizontal: globalStyles.paddingHorizantal,
+            marginBottom: normalize(8),
           }}>
-          Top Makeup Artist
-        </Text>
-        <Text
-          onPress={() => navigation.navigate('AllMakeupArtist')}
-          style={{
-            fontSize: normalize(11),
-            lineHeight: normalize(11) * 1.4,
-            fontFamily: Fonts.PoppinsSemiBold,
-            color: COLORS.primary,
-          }}>
-          Show All
-        </Text>
-      </View>
-
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-        }}>
-        {topArtist.map((item, index) => {
-          return (
-            <Fragment key={index}>
-              <ArtistCard item={item} index={index} />
-            </Fragment>
-          );
-        })}
-      </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+            }}>
+            {topArtist.map((item, index) => {
+              return (
+                <Fragment key={index}>
+                  <ArtistCard item={item} index={index} />
+                </Fragment>
+              );
+            })}
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 }

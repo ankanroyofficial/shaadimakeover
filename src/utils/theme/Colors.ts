@@ -14,4 +14,5 @@ export const COLORS = {
   grayText: '#989898',
   grayF5: '#f5f5f5',
   green: '#4FD274',
+  grayBackground: '#EEEEEE'
 };

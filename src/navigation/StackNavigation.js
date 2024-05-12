@@ -11,6 +11,9 @@ import UserTypeSelection from '../screen/auth/UserTypeSelection';
 import BottomTabNavigation from './BottomTabNavigation';
 import MakeupArtistDetails from '../screen/main/makeupArtist/MakeupArtistDetails';
 import MakeupArtistProfile from '../screen/main/makeupArtist/MakeupArtistProfile';
+import CustomerEditProfile from '../screen/main/user/CustomerEditProfile';
+import ContactUs from '../screen/main/user/ContactUs';
+import AllMakeupArtist from '../screen/main/makeupArtist/AllMakeupArtist';
 
 export default function StackNavigation() {
   const Stack = createNativeStackNavigator();
@@ -26,6 +29,9 @@ export default function StackNavigation() {
     BottomTabNavigation: BottomTabNavigation,
     MakeupArtistDetails: MakeupArtistDetails,
     MakeupArtistProfile: MakeupArtistProfile,
+    CustomerEditProfile: CustomerEditProfile,
+    ContactUs: ContactUs,
+    AllMakeupArtist: AllMakeupArtist,
   };
 
   return (

@@ -24,8 +24,7 @@ export const Icons = {
   insta: require('../../assets/icons/insta.png'),
   chat: require('../../assets/icons/chat.png'),
 
-
-  experience: require('../../assets/icons/experience.png'), 
+  experience: require('../../assets/icons/experience.png'),
   mail: require('../../assets/icons/mail.png'),
   phone: require('../../assets/icons/phone.png'),
   clock: require('../../assets/icons/clock.png'),
@@ -34,4 +33,13 @@ export const Icons = {
 
   video: require('../../assets/icons/video.png'),
   image: require('../../assets/icons/image.png'),
+
+  bank: require('../../assets/icons/bank.png'),
+  edit: require('../../assets/icons/edit.png'),
+  call: require('../../assets/icons/call.png'),
+  logout: require('../../assets/icons/logout.png'),
+  delete: require('../../assets/icons/delete.png'),
+  camera: require('../../assets/icons/camera.png'),
+  down: require('../../assets/icons/down.png'),
+  left: require('../../assets/icons/left.png'),
 };

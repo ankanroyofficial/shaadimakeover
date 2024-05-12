@@ -61,7 +61,7 @@ export default function UserTypeSelection(props: Object) {
         </View>
         {/* bottom */}
         <View style={styles.bottomContainer}>
-          <Text style={styles.heading}>Select user type</Text>
+          <Text style={styles.heading}>Select User Type</Text>
           <Text
             style={{
               ...styles.smallText,
