@@ -165,7 +165,7 @@ export default function User() {
                 marginTop: normalize(10),
                 paddingHorizontal: normalize(15),
                 paddingVertical: normalize(20),
-                backgroundColor: COLORS.grayBackground,
+                backgroundColor: 'rgba(207, 68, 89, 0.15)',
                 width: '100%',
                 borderRadius: normalize(11),
               }}>
@@ -189,7 +189,7 @@ export default function User() {
                             fontSize: normalize(11),
                             lineHeight: normalize(11) * 1.4,
                             fontFamily: Fonts.PoppinsRegular,
-                            color: COLORS.textColor,
+                            color: 'rgba(207, 68, 89, 0.7)',
                           }}>
                           {item.title}
                         </Text>
@@ -204,7 +204,7 @@ export default function User() {
                             fontSize: normalize(11),
                             lineHeight: normalize(11) * 1.4,
                             fontFamily: Fonts.PoppinsMedium,
-                            color: COLORS.textColor,
+                            color: COLORS.primary,
                             textAlign: 'right',
                           }}>
                           {item.details}

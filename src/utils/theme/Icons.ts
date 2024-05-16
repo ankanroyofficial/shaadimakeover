@@ -42,4 +42,5 @@ export const Icons = {
   camera: require('../../assets/icons/camera.png'),
   down: require('../../assets/icons/down.png'),
   left: require('../../assets/icons/left.png'),
+  play: require('../../assets/icons/play.png'),
 };

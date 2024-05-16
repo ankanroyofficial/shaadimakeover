@@ -26,8 +26,14 @@ export default function Home() {
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
-      <StatusBar backgroundColor={COLORS.white} barStyle={'dark-content'} translucent={false} />
-      <HeaderWithIcon />
+      <StatusBar
+        backgroundColor={COLORS.white}
+        barStyle={'dark-content'}
+        translucent={false}
+      />
+      <HeaderWithIcon
+      // isUserProfileButton
+      />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: normalize(100)}}>

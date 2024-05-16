@@ -6,15 +6,21 @@ import {
   Image,
   Pressable,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import React, {Fragment, useState} from 'react';
-import {normalize, screenHeight} from '../../../utils/theme/Dimens';
+import {
+  normalize,
+  screenHeight,
+  screenWidth,
+} from '../../../utils/theme/Dimens';
 import {Images} from '../../../utils/theme/Images';
 import {globalStyles} from '../../../utils/theme/GlobalStyle';
 import {Icons} from '../../../utils/theme/Icons';
 import {COLORS} from '../../../utils/theme/Colors';
 import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
+import PostCard from '../../../components/PostCard';
 
 export default function MakeupArtistDetails(props) {
   const {artistData} = props.route.params;
@@ -100,6 +106,48 @@ export default function MakeupArtistDetails(props) {
     },
   ];
 
+  const postArr = [
+    {
+      image: Images.gallary,
+      id: 0,
+    },
+    {
+      image: Images.makeup4,
+      id: 1,
+    },
+    {
+      image: Images.makeup1,
+      id: 2,
+    },
+    {
+      image: Images.gallary3,
+      id: 3,
+    },
+    {
+      image: Images.makeup2,
+      id: 4,
+    },
+    {
+      image: Images.makeup3,
+      id: 5,
+    },
+    {
+      image: Images.dummypost,
+      id: 6,
+    },
+    {
+      image: Images.makeup5,
+      id: 7,
+    },
+    {
+      image: Images.gallary2,
+      id: 8,
+    },
+    {
+      image: Images.gallary2,
+      id: 9,
+    },
+  ];
   return (
     <View style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
       <StatusBar
@@ -107,7 +155,9 @@ export default function MakeupArtistDetails(props) {
         backgroundColor={'rgba(0,0,0,0)'}
         barStyle={'light-content'}
       />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: normalize(10)}}>
         {/* Image */}
         <ImageBackground
           source={Images.img1}
@@ -332,7 +382,7 @@ export default function MakeupArtistDetails(props) {
           </View>
         </View>
         {/* services list */}
-        <View
+        {/* <View
           style={{
             width: '100%',
             paddingHorizontal: globalStyles.paddingHorizantal,
@@ -376,83 +426,251 @@ export default function MakeupArtistDetails(props) {
               );
             })}
           </ScrollView>
-        </View>
+        </View> */}
+        <View style={{marginTop: normalize(15)}} />
         {/* SERVICES */}
-
-        <View
-          style={{
-            width: '100%',
-            paddingHorizontal: globalStyles.paddingHorizantal,
-            marginTop: normalize(15),
-          }}>
-          {[0, 1, 2, 3].map((item, index) => {
-            return (
-              <View
-                key={index}
-                style={{
-                  width: '100%',
-                  height: normalize(135),
-                  backgroundColor: COLORS.white,
-                  borderRadius: normalize(12),
-                  elevation: normalize(1),
-                  padding: normalize(12),
-                  justifyContent: 'space-between',
-                  marginBottom: normalize(10),
-                }}>
-                <Text
-                  numberOfLines={1}
+        {whichTab == 'services' && (
+          <View
+            style={{
+              width: '100%',
+              paddingHorizontal: globalStyles.paddingHorizantal,
+            }}>
+            {[0, 1, 2, 3].map((item, index) => {
+              return (
+                <View
+                  key={index}
                   style={{
-                    fontSize: normalize(12),
-                    lineHeight: normalize(12) * 1.4,
-                    fontFamily: Fonts.PoppinsSemiBold,
-                    color: COLORS.textColor,
-                  }}>
-                  Service Name Goes Here
-                </Text>
-                <Text
-                  numberOfLines={1}
-                  style={{
-                    fontSize: normalize(11),
-                    lineHeight: normalize(11) * 1.4,
-                    fontFamily: Fonts.PoppinsBold,
-                    color: COLORS.primary,
-                  }}>
-                  ₹1,500 INR
-                </Text>
-                <Text
-                  numberOfLines={2}
-                  style={{
-                    fontSize: normalize(11),
-                    lineHeight: normalize(11) * 1.4,
-                    fontFamily: Fonts.PoppinsRegular,
-                    color: COLORS.placeholderColor,
-                  }}>
-                  Add face framing-detail to your look with a Service Name Goes
-                  Here.
-                </Text>
-                <Pressable
-                  style={{
-                    width: normalize(80),
-                    paddingVertical: normalize(7),
-                    backgroundColor: COLORS.primary,
-                    borderRadius: normalize(9),
+                    width: '100%',
+                    backgroundColor: COLORS.white,
+                    borderRadius: normalize(12),
+                    elevation: normalize(1),
+                    paddingHorizontal: normalize(14),
+                    paddingVertical: normalize(15),
+                    justifyContent: 'space-between',
+                    marginBottom: normalize(10),
                     alignItems: 'center',
                   }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View style={{flex: 1}}>
+                      <Text
+                        numberOfLines={1}
+                        style={{
+                          fontSize: normalize(12),
+                          lineHeight: normalize(12) * 1.4,
+                          fontFamily: Fonts.PoppinsMedium,
+                          color: COLORS.textColor,
+                          width: '90%',
+                        }}>
+                        Service Name Goes HereService Name Goes HereService Name
+                        Goes HereService Name Goes HereService Name Goes
+                        HereService Name Goes Here
+                      </Text>
+                      <Text
+                        numberOfLines={1}
+                        style={{
+                          fontSize: normalize(11),
+                          lineHeight: normalize(11) * 1.4,
+                          fontFamily: Fonts.PoppinsBold,
+                          color: COLORS.textColor,
+                          paddingVertical: normalize(2),
+                        }}>
+                        ₹ 100 INR - ₹ 1,500 INR
+                      </Text>
+                    </View>
+
+                    <Pressable
+                      style={{
+                        width: normalize(80),
+                        height: normalize(32),
+                        // paddingVertical: normalize(7),
+                        backgroundColor: COLORS.primary,
+                        borderRadius: normalize(9),
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                      <Text
+                        numberOfLines={1}
+                        style={{
+                          fontSize: normalize(11),
+                          lineHeight: normalize(11) * 1.4,
+                          fontFamily: Fonts.PoppinsMedium,
+                          color: COLORS.white,
+                        }}>
+                        Book Now
+                      </Text>
+                    </Pressable>
+                  </View>
+                </View>
+              );
+            })}
+          </View>
+        )}
+
+        {whichTab == 'posts' && (
+          <View
+            style={{
+              width: screenWidth,
+              paddingHorizontal: screenWidth * 0.05,
+            }}>
+            <FlatList
+              scrollEnabled={false}
+              data={postArr}
+              numColumns={3}
+              renderItem={({item, index}) => {
+                return (
+                  <View
+                    key={index}
+                    style={{
+                      width: screenWidth * 0.294,
+                      height: screenWidth * 0.294,
+                      backgroundColor: COLORS.grayF5,
+                      alignItems: 'center',
+                      marginRight: screenWidth * 0.009,
+                      marginBottom: screenWidth * 0.009,
+                    }}>
+                    <Image
+                      source={item.image}
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        resizeMode: 'cover',
+                      }}
+                    />
+                  </View>
+                );
+              }}
+            />
+          </View>
+        )}
+
+        {whichTab == 'reviews' && (
+          <View
+            style={{
+              width: '100%',
+              paddingHorizontal: globalStyles.paddingHorizantal,
+            }}>
+            {[0, 1, 2, 3].map((item, index) => {
+              return (
+                <View
+                  key={index}
+                  style={{
+                    width: '100%',
+                    backgroundColor: COLORS.white,
+                    borderRadius: normalize(12),
+                    elevation: normalize(1),
+                    padding: normalize(12),
+                    justifyContent: 'space-between',
+                    marginBottom: normalize(10),
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      marginBottom: normalize(5),
+                    }}>
+                    <FlatList
+                      data={[0, 1, 2, 3, 4]}
+                      horizontal
+                      renderItem={({item, index}) => {
+                        return (
+                          <View
+                            key={index}
+                            style={{
+                              height: normalize(10),
+                              width: normalize(10),
+                            }}>
+                            <Image
+                              source={Icons.star}
+                              style={{
+                                height: '100%',
+                                width: '100%',
+                                resizeMode: 'cover',
+                              }}
+                            />
+                          </View>
+                        );
+                      }}
+                      ItemSeparatorComponent={() => {
+                        return <View style={{width: normalize(5)}} />;
+                      }}
+                    />
+                  </View>
                   <Text
                     numberOfLines={1}
                     style={{
+                      fontSize: normalize(12),
+                      lineHeight: normalize(12) * 1.4,
+                      fontFamily: Fonts.PoppinsMedium,
+                      color: COLORS.textColor,
+                    }}>
+                    Service Name Goes Here
+                  </Text>
+                  <Text
+                    numberOfLines={2}
+                    style={{
                       fontSize: normalize(11),
                       lineHeight: normalize(11) * 1.4,
-                      fontFamily: Fonts.PoppinsMedium,
-                      color: COLORS.white,
+                      fontFamily: Fonts.PoppinsRegular,
+                      color: COLORS.placeholderColor,
+                      marginVertical: normalize(5),
                     }}>
-                    Book Now
+                    Add face framing-detail to your look with a Service Name
+                    Goes Here.
                   </Text>
-                </Pressable>
-              </View>
-            );
-          })}
-        </View>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <View
+                      style={{
+                        height: normalize(20),
+                        width: normalize(20),
+                        borderRadius: normalize(20) / 2,
+                        backgroundColor: 'red',
+                        overflow: 'hidden',
+                      }}>
+                      <Image
+                        source={Images.artist3}
+                        style={{
+                          height: '100%',
+                          width: '100%',
+                          resizeMode: 'cover',
+                        }}
+                      />
+                    </View>
+                    <Text
+                      numberOfLines={1}
+                      style={{
+                        fontSize: normalize(11.5),
+                        lineHeight: normalize(11.5) * 1.4,
+                        fontFamily: Fonts.PoppinsMedium,
+                        color: COLORS.textColor,
+                        paddingLeft: normalize(5),
+                      }}>
+                      Ananaya Das
+                    </Text>
+                  </View>
+                </View>
+              );
+            })}
+          </View>
+        )}
+        {whichTab == 'gallery' && (
+          <View
+            style={{
+              width: '100%',
+              paddingHorizontal: globalStyles.paddingHorizantal,
+            }}>
+            {[0, 1, 2, 3].map((item, index) => {
+              return (
+                <Fragment key={index}>
+                  <PostCard item={item} index={index} />
+                </Fragment>
+              );
+            })}
+          </View>
+        )}
       </ScrollView>
     </View>
   );

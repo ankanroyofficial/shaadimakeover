@@ -34,6 +34,11 @@ export const Images = {
   user2: require('../../assets/images/forTest/user2.png'),
   user3: require('../../assets/images/forTest/user3.png'),
   user4: require('../../assets/images/forTest/user4.png'),
+  
+  gallary: require('../../assets/images/forTest/gallary.png'),
+  gallary1: require('../../assets/images/forTest/gallary1.png'),
+  gallary2: require('../../assets/images/forTest/gallary2.png'),
+  gallary3: require('../../assets/images/forTest/gallary3.png'),
 
 
 

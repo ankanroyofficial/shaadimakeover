@@ -7,7 +7,7 @@ import {COLORS} from '../../utils/theme/Colors';
 import {Icons} from '../../utils/theme/Icons';
 import {Fonts} from '../../utils/theme/Fonts';
 
-export default function HeaderWithIcon() {
+export default function HeaderWithIcon({isUserProfileButton}) {
   return (
     <View
       style={{
@@ -30,26 +30,28 @@ export default function HeaderWithIcon() {
         />
       </View>
       <View style={{flexDirection: 'row', flex: 1, justifyContent: 'flex-end'}}>
-        <View
-          style={{
-            height: normalize(30),
-            width: normalize(80),
-            backgroundColor: COLORS.primary,
-            borderRadius: normalize(8),
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: normalize(10),
-          }}>
-          <Text
+        {isUserProfileButton != undefined && (
+          <View
             style={{
-              color: COLORS.white,
-              fontSize: normalize(10),
-              fontFamily: Fonts.PoppinsSemiBold,
-              lineHeight: normalize(10) * 1.4,
+              height: normalize(30),
+              width: normalize(80),
+              backgroundColor: COLORS.primary,
+              borderRadius: normalize(8),
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: normalize(10),
             }}>
-            User Profile
-          </Text>
-        </View>
+            <Text
+              style={{
+                color: COLORS.white,
+                fontSize: normalize(10),
+                fontFamily: Fonts.PoppinsSemiBold,
+                lineHeight: normalize(10) * 1.4,
+              }}>
+              User Profile
+            </Text>
+          </View>
+        )}
         <View
           style={{
             height: normalize(30),
