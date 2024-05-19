@@ -43,4 +43,14 @@ export const Icons = {
   down: require('../../assets/icons/down.png'),
   left: require('../../assets/icons/left.png'),
   play: require('../../assets/icons/play.png'),
+
+  whiteCard: require('../../assets/icons/whiteCard.png'),
+  primaryCard: require('../../assets/icons/primaryCard.png'),
+  up: require('../../assets/icons/up.png'),
+  clockOutline: require('../../assets/icons/clockOutline.png'),
+  dash: require('../../assets/icons/dash.png'),
+  simpleCalender: require('../../assets/icons/simpleCalender.png'),
+  makeupOutline: require('../../assets/icons/makeupOutline.png'),
+  logo: require('../../assets/icons/logo.png'),
+  cross: require('../../assets/icons/cross.png'),
 };

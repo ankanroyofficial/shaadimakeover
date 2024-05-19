@@ -1,4 +1,4 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Pressable} from 'react-native';
 import React from 'react';
 import {globalStyles} from '../../utils/theme/GlobalStyle';
 import {normalize} from '../../utils/theme/Dimens';
@@ -7,7 +7,11 @@ import {COLORS} from '../../utils/theme/Colors';
 import {Icons} from '../../utils/theme/Icons';
 import {Fonts} from '../../utils/theme/Fonts';
 
-export default function HeaderWithIcon({isUserProfileButton}) {
+export default function HeaderWithIcon({
+  isUserProfileButton,
+  isSubscribeButton,
+  onPressSubscriptionButton,
+}) {
   return (
     <View
       style={{
@@ -51,6 +55,32 @@ export default function HeaderWithIcon({isUserProfileButton}) {
               User Profile
             </Text>
           </View>
+        )}
+        {isSubscribeButton != undefined && (
+          <Pressable
+            disabled={onPressSubscriptionButton == undefined}
+            onPress={onPressSubscriptionButton}
+            style={{
+              height: normalize(26),
+              width: normalize(77),
+              backgroundColor: COLORS.white,
+              borderColor: COLORS.primary,
+              borderWidth: normalize(1),
+              borderRadius: normalize(20),
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: normalize(10),
+            }}>
+            <Text
+              style={{
+                color: COLORS.primary,
+                fontSize: normalize(10),
+                fontFamily: Fonts.PoppinsSemiBold,
+                lineHeight: normalize(10) * 1.4,
+              }}>
+              Subscribe
+            </Text>
+          </Pressable>
         )}
         <View
           style={{

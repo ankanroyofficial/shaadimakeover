@@ -8,7 +8,7 @@ import {
   ScrollView,
   ImageBackground,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {normalize} from '../../../utils/theme/Dimens';
 import {globalStyles} from '../../../utils/theme/GlobalStyle';
 import {COLORS} from '../../../utils/theme/Colors';
@@ -21,8 +21,13 @@ import CategoryComponent from '../../../components/cart/CategoryComponent';
 import Banner from '../../../components/Banner';
 import MakeupArtistComponent from '../../../components/MakeupArtistComponent';
 import PostComponent from '../../../components/PostComponent';
+import SubsciptionModal from '../subscription/SubsciptionPage';
 
 export default function Home() {
+  const [isSubscriptionModal, setIsSubscriptionModal] = useState(false);
+  useEffect(() => {
+    setIsSubscriptionModal(true);
+  }, []);
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
@@ -32,7 +37,11 @@ export default function Home() {
         translucent={false}
       />
       <HeaderWithIcon
-      // isUserProfileButton
+        // isUserProfileButton
+        isSubscribeButton
+        onPressSubscriptionButton={() => {
+          setIsSubscriptionModal(true);
+        }}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -43,6 +52,10 @@ export default function Home() {
         <MakeupArtistComponent />
         <PostComponent />
       </ScrollView>
+      <SubsciptionModal
+        isVisible={isSubscriptionModal}
+        onClose={() => setIsSubscriptionModal(false)}
+      />
     </SafeAreaView>
   );
 }

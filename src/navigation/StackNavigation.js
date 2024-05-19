@@ -14,6 +14,7 @@ import MakeupArtistProfile from '../screen/main/makeupArtist/MakeupArtistProfile
 import CustomerEditProfile from '../screen/main/user/CustomerEditProfile';
 import ContactUs from '../screen/main/user/ContactUs';
 import AllMakeupArtist from '../screen/main/makeupArtist/AllMakeupArtist';
+import AllPost from '../screen/main/post/AllPost';
 
 export default function StackNavigation() {
   const Stack = createNativeStackNavigator();
@@ -32,6 +33,7 @@ export default function StackNavigation() {
     CustomerEditProfile: CustomerEditProfile,
     ContactUs: ContactUs,
     AllMakeupArtist: AllMakeupArtist,
+    AllPost: AllPost,
   };
 
   return (

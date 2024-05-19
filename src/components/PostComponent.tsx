@@ -7,24 +7,47 @@ import {Fonts} from '../utils/theme/Fonts';
 import {Icons} from '../utils/theme/Icons';
 import {COLORS} from '../utils/theme/Colors';
 import PostCard from './PostCard';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
-export default function PostComponent() { 
+export default function PostComponent() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <View
       style={{
         width: '100%',
         paddingHorizontal: globalStyles.paddingHorizantal,
       }}>
-      <Text
+      <View
         style={{
-          fontSize: normalize(13),
-          lineHeight: normalize(13) * 1.4,
-          fontFamily: Fonts.PoppinsMedium,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           marginBottom: normalize(10),
-          color: COLORS.textColor,
         }}>
-        Recent Posts
-      </Text>
+        <Text
+          style={{
+            fontSize: normalize(13),
+            lineHeight: normalize(13) * 1.4,
+            fontFamily: Fonts.PoppinsMedium,
+            color: COLORS.textColor,
+          }}>
+          Recent Posts
+        </Text>
+        <Text
+          onPress={() => navigation.navigate('AllPost')}
+          style={{
+            fontSize: normalize(11),
+            lineHeight: normalize(11) * 1.4,
+            fontFamily: Fonts.PoppinsSemiBold,
+            color: COLORS.primary,
+          }}>
+          Show All
+        </Text>
+      </View>
 
       {[0, 1, 2, 3].map((item, index) => {
         return (

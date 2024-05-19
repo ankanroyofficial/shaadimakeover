@@ -33,11 +33,11 @@ const tabBarList = [
     component: Booking,
     icon: Icons.calender,
   },
-  {
-    name: 'Favorite',
-    component: Favorite,
-    icon: Icons.tabFav,
-  },
+  // {
+  //   name: 'Favorite',
+  //   component: Favorite,
+  //   icon: Icons.tabFav,
+  // },
   {
     name: 'Message',
     component: Message,

@@ -21,10 +21,14 @@ import {COLORS} from '../../../utils/theme/Colors';
 import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import PostCard from '../../../components/PostCard';
+import BookingModal from './BookingModal';
 
 export default function MakeupArtistDetails(props) {
   const {artistData} = props.route.params;
   const navigation = useNavigation();
+  const [whichTab, setWhichTab] = useState('services');
+  const [whichService, setWhichService] = useState(0);
+  const [isBookingModal, setIsBookingModal] = useState(false);
   const topTabArr = [
     {
       title: 'Services',
@@ -43,8 +47,6 @@ export default function MakeupArtistDetails(props) {
       value: 'gallery',
     },
   ];
-  const [whichTab, setWhichTab] = useState('services');
-  const [whichService, setWhichService] = useState(0);
   const TopTabBox = ({item, index}) => {
     return (
       <Pressable
@@ -144,7 +146,7 @@ export default function MakeupArtistDetails(props) {
       id: 8,
     },
     {
-      image: Images.gallary2,
+      image: Images.dummypost,
       id: 9,
     },
   ];
@@ -465,9 +467,7 @@ export default function MakeupArtistDetails(props) {
                           color: COLORS.textColor,
                           width: '90%',
                         }}>
-                        Service Name Goes HereService Name Goes HereService Name
-                        Goes HereService Name Goes HereService Name Goes
-                        HereService Name Goes Here
+                        Service Name Goes Here
                       </Text>
                       <Text
                         numberOfLines={1}
@@ -483,10 +483,12 @@ export default function MakeupArtistDetails(props) {
                     </View>
 
                     <Pressable
+                      onPress={() => {
+                        setIsBookingModal(true);
+                      }}
                       style={{
                         width: normalize(80),
                         height: normalize(32),
-                        // paddingVertical: normalize(7),
                         backgroundColor: COLORS.primary,
                         borderRadius: normalize(9),
                         alignItems: 'center',
@@ -509,7 +511,6 @@ export default function MakeupArtistDetails(props) {
             })}
           </View>
         )}
-
         {whichTab == 'posts' && (
           <View
             style={{
@@ -546,7 +547,6 @@ export default function MakeupArtistDetails(props) {
             />
           </View>
         )}
-
         {whichTab == 'reviews' && (
           <View
             style={{
@@ -672,6 +672,10 @@ export default function MakeupArtistDetails(props) {
           </View>
         )}
       </ScrollView>
+      <BookingModal
+        isVisible={isBookingModal}
+        onClose={() => setIsBookingModal(false)}
+      />
     </View>
   );
 }

@@ -1,7 +1,15 @@
-import {View, Text, SafeAreaView, Image, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  StatusBar,
+  ImageBackground,
+} from 'react-native';
 import React, {useEffect} from 'react';
 import {Images} from '../../utils/theme/Images';
 import {COLORS} from '../../utils/theme/Colors';
+import {normalize} from '../../utils/theme/Dimens';
 
 export default function SplashScreen(props: any) {
   const navigation = props.navigation;
@@ -15,16 +23,32 @@ export default function SplashScreen(props: any) {
   };
 
   useEffect(() => {
-    setTimeout(navigateToNextPage, 3000);
+    setTimeout(navigateToNextPage, 2500);
   }, []);
 
   return (
     <SafeAreaView style={{flex: 1}}>
       <StatusBar backgroundColor={COLORS.primary} barStyle={'light-content'} />
-      <Image
+      <ImageBackground
         source={Images.splash}
-        style={{height: '100%', width: '100%', resizeMode: 'stretch'}}
-      />
+        resizeMode={'stretch'}
+        style={{
+          height: '100%',
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            height: normalize(80),
+            width: normalize(180), 
+          }}>
+          <Image
+            source={Images.whiteLogoWithName}
+            style={{height: '100%', width: '100%', resizeMode: 'contain'}}
+          />
+        </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 }

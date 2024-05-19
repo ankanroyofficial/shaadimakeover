@@ -100,10 +100,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heading: {
-    fontSize: normalize(17),
+    fontSize: normalize(16),
     fontFamily: Fonts.PoppinsSemiBold,
     textAlign: 'center',
-    lineHeight: normalize(17) * 1.4,
+    lineHeight: normalize(16) * 1.4,
+    color:COLORS?.TextInputTextColor
   },
   smallText: {
     fontSize: normalize(11),

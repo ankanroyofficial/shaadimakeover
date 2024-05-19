@@ -5,6 +5,7 @@ export const Images = {
   primaryLogoWithName: require('../../assets/images/primaryLogoWithName.png'),
   customer: require('../../assets/images/customer.png'),
   cosmetics: require('../../assets/images/cosmetics.png'),
+  subscription: require('../../assets/images/subscription.png'),
 
   // for testing purposes
   dummyBanner: require('../../assets/images/forTest/dummyBanner.png'),

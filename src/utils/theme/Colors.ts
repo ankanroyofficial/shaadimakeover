@@ -13,6 +13,7 @@ export const COLORS = {
   borderColor: '#C8C8C8',
   grayText: '#989898',
   grayF5: '#f5f5f5',
-  green: '#4FD274',
+  // green: '#4FD274',
+  green: '#26CB63',
   grayBackground: '#EEEEEE'
 };

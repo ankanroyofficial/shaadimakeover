@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import {normalize} from '../../../utils/theme/Dimens';
 import {globalStyles} from '../../../utils/theme/GlobalStyle';
 import {COLORS} from '../../../utils/theme/Colors';
@@ -20,9 +20,10 @@ import {Icons} from '../../../utils/theme/Icons';
 import HeaderWithIcon from '../../../components/header/HeaderWithIcon';
 import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
-
+import {Switch} from 'react-native-switch';
 export default function User() {
   const navigation = useNavigation();
+  const [isMakeupArtist, setIsMakeupArtist] = useState(false);
   const detailsArr = [
     {
       title: 'Phone Number',
@@ -45,9 +46,11 @@ export default function User() {
 
   const buttonDetails = [
     {
-      title: 'Bank Account ',
-      icon: Icons.bank,
-      onPress: () => {},
+      title: 'Switch To Makeup Artist',
+      icon: Icons.makeupOutline,
+      onPress: val => {
+        setIsMakeupArtist(val);
+      },
     },
     {
       title: 'Contact Us',
@@ -220,6 +223,7 @@ export default function User() {
           {buttonDetails.map((item, index) => {
             return (
               <Pressable
+                disabled={index == 0}
                 onPress={item.onPress}
                 key={index}
                 style={{
@@ -244,19 +248,66 @@ export default function User() {
                   }}>
                   <Image
                     source={item.icon}
-                    style={{height: '52%', width: '52%', resizeMode: 'contain'}}
+                    style={{
+                      height: '52%',
+                      width: '52%',
+                      resizeMode: 'contain',
+                      tintColor: COLORS.primary,
+                    }}
                   />
                 </View>
-                <Text
+
+                <View
                   style={{
-                    fontSize: normalize(11),
-                    lineHeight: normalize(11) * 1.4,
-                    fontFamily: Fonts.PoppinsMedium,
-                    color: COLORS.textColor,
-                    marginLeft: normalize(9),
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}>
-                  {item.title}
-                </Text>
+                  <Text
+                    style={{
+                      fontSize: normalize(11),
+                      lineHeight: normalize(11) * 1.4,
+                      fontFamily: Fonts.PoppinsMedium,
+                      color: COLORS.textColor,
+                      marginLeft: normalize(9),
+                    }}>
+                    {item.title}
+                  </Text>
+
+                  {index == 0 && (
+                    <Switch
+                      value={isMakeupArtist}
+                      onValueChange={item.onPress}
+                      disabled={false}
+                      activeText={''}
+                      inActiveText={''}
+                      changeValueImmediately={true}
+                      innerCircleStyle={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      renderActiveText={true}
+                      renderInActiveText={true}
+                      activeTextStyle={{fontSize: 15}}
+                      inactiveTextStyle={{
+                        fontSize: 15,
+                        color: 'rgba(110, 110, 110, 255)',
+                      }}
+                      switchLeftPx={2}
+                      switchRightPx={2}
+                      switchWidthMultiplier={3}
+                      switchBorderRadius={30}
+                      circleSize={normalize(12)}
+                      barHeight={normalize(20)}
+                      circleBorderWidth={0}
+                      backgroundActive={COLORS.primary}
+                      backgroundInactive={COLORS.textinputBackground}
+                      circleActiveColor={COLORS.white}
+                      circleInActiveColor={COLORS.primary}
+                    />
+                  )}
+                </View>
               </Pressable>
             );
           })}
