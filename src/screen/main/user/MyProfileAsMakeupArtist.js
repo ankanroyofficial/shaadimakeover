@@ -17,7 +17,7 @@ import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../../../components/Button';
 
-export default function MakeupArtistProfile() {
+export default function MyProfileAsMakeupArtist() {
   const navigation = useNavigation();
 
   const [whichTab, setWhichTab] = useState('photos');
@@ -198,7 +198,7 @@ export default function MakeupArtistProfile() {
         barStyle={'light-content'}
       />
       <ScrollView
-        contentContainerStyle={{paddingBottom: normalize(5)}}
+        contentContainerStyle={{paddingBottom: normalize(100)}}
         showsVerticalScrollIndicator={false}>
         {/* Image */}
         <ImageBackground
@@ -254,20 +254,62 @@ export default function MakeupArtistProfile() {
         </ImageBackground>
         <View
           style={{
-            height: normalize(85),
-            width: normalize(85),
-            borderRadius: normalize(85) / 2,
-            backgroundColor: 'red',
-            marginTop: -normalize(85) / 2,
-            marginLeft: globalStyles.paddingHorizantal,
-            overflow: 'hidden',
-            borderWidth: normalize(2),
-            borderColor: COLORS.white,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: globalStyles.paddingHorizantal,
           }}>
-          <Image
-            source={Images.dummyUser}
-            style={{height: '100%', width: '100%', resizeMode: 'cover'}}
-          />
+          {/* profile photo */}
+          <View
+            style={{
+              height: normalize(85),
+              width: normalize(85),
+              borderRadius: normalize(85) / 2,
+              backgroundColor: COLORS.grayF5,
+              marginTop: -normalize(85) / 2,
+              overflow: 'hidden',
+              borderWidth: normalize(2),
+              borderColor: COLORS.white,
+            }}>
+            <Image
+              source={Images.dummyUser}
+              style={{height: '100%', width: '100%', resizeMode: 'cover'}}
+            />
+          </View>
+          {/* *edit button */}
+
+          <View
+            style={{
+              // width: normalize(35),
+              height: normalize(27),
+              // paddingVertical:normalize(0),
+              paddingHorizontal: normalize(15),
+              backgroundColor: COLORS.primary,
+              borderRadius: normalize(20),
+              alignItems: 'center',
+              flexDirection: 'row',
+              marginTop: normalize(4),
+            }}>
+            <Image
+              source={Icons.edit}
+              style={{
+                height: normalize(14),
+                width: normalize(14),
+                resizeMode: 'contain',
+                tintColor: COLORS.white,
+              }}
+            />
+            <Text
+              numberOfLines={1}
+              style={{
+                fontSize: normalize(11.5),
+                lineHeight: normalize(11.5) * 1.4,
+                fontFamily: Fonts.PoppinsSemiBold,
+                color: COLORS.white,
+                marginLeft: normalize(4),
+              }}>
+              Edit Profile
+            </Text>
+          </View>
         </View>
 
         <View
@@ -370,6 +412,7 @@ export default function MakeupArtistProfile() {
           <View
             style={{
               flexDirection: 'row',
+              // backgroundColor: 'red',
               width: '100%',
               justifyContent: 'space-between',
               height: normalize(26),
@@ -377,7 +420,7 @@ export default function MakeupArtistProfile() {
               marginTop: normalize(8),
             }}>
             <Button
-              title="Services"
+              title="Add Services"
               containerStyle={{
                 width: '43%',
                 height: '100%',
@@ -389,7 +432,7 @@ export default function MakeupArtistProfile() {
               }}
             />
             <Button
-              title="Price"
+              title="Add Price"
               containerStyle={{
                 width: '43%',
                 height: '100%',
@@ -400,7 +443,7 @@ export default function MakeupArtistProfile() {
                 fontSize: normalize(11.5),
               }}
             />
-
+            {/* *post */}
             <View
               style={{
                 width: normalize(26),
@@ -411,10 +454,10 @@ export default function MakeupArtistProfile() {
                 alignItems: 'center',
               }}>
               <Image
-                source={Icons.message}
+                source={Icons.plus}
                 style={{
-                  height: '62%',
-                  width: '62%',
+                  height: '40%',
+                  width: '40%',
                   resizeMode: 'contain',
                   tintColor: COLORS.white,
                 }}
@@ -452,15 +495,6 @@ export default function MakeupArtistProfile() {
           </View>
         </View>
       </ScrollView>
-      <View
-        style={{
-          width: '100%',
-          paddingHorizontal: globalStyles.paddingHorizantal,
-          paddingTop: normalize(2),
-          paddingBottom: normalize(5),
-        }}>
-        <Button title="Book Now" />
-      </View>
     </View>
   );
 }

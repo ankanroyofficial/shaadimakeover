@@ -21,7 +21,7 @@ import HeaderWithIcon from '../../../components/header/HeaderWithIcon';
 import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {Switch} from 'react-native-switch';
-export default function User() {
+export default function MyProfileAsCustomer() {
   const navigation = useNavigation();
   const [isMakeupArtist, setIsMakeupArtist] = useState(false);
   const detailsArr = [
@@ -43,7 +43,6 @@ export default function User() {
       details: 'Kolkata',
     },
   ];
-
   const buttonDetails = [
     {
       title: 'Switch To Makeup Artist',
@@ -70,7 +69,6 @@ export default function User() {
       onPress: () => {},
     },
   ];
-
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>

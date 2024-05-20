@@ -53,4 +53,5 @@ export const Icons = {
   makeupOutline: require('../../assets/icons/makeupOutline.png'),
   logo: require('../../assets/icons/logo.png'),
   cross: require('../../assets/icons/cross.png'),
+  plus: require('../../assets/icons/plus.png'),
 };

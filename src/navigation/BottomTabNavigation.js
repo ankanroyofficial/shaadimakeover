@@ -3,22 +3,18 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   StyleSheet,
   View,
-  Image,
-  Dimensions,
-  Platform,
-  ImageBackground,
+  Image, 
+  Platform, 
 } from 'react-native';
 import {Icons} from '../utils/theme/Icons';
 import {normalize} from '../utils/theme/Dimens';
 import {COLORS} from '../utils/theme/Colors';
-import SignIn from '../screen/auth/SignIn';
-import SignUp from '../screen/auth/SignUp';
-import OtpVerification from '../screen/auth/OtpVerification';
 import Home from '../screen/main/home/Home';
-import User from '../screen/main/user/User';
 import Message from '../screen/main/message/Message';
 import Favorite from '../screen/main/favorite/Favorite';
-import Booking from '../screen/main/booking/Booking';
+import Booking from '../screen/main/booking/Booking'; 
+import MyProfileAsMakeupArtist from '../screen/main/user/MyProfileAsMakeupArtist';
+import MyProfileAsCustomer from '../screen/main/user/MyProfileAsCustomer';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,26 +23,37 @@ const tabBarList = [
     name: 'Home',
     component: Home,
     icon: Icons.home,
+    isVisible: true,
   },
   {
     name: 'Booking',
     component: Booking,
     icon: Icons.calender,
+    isVisible: true,
   },
   // {
   //   name: 'Favorite',
   //   component: Favorite,
   //   icon: Icons.tabFav,
+  // isVisible:true
   // },
   {
     name: 'Message',
     component: Message,
     icon: Icons.message,
+    isVisible: true,
   },
   {
-    name: 'User',
-    component: User,
+    name: 'MyProfileAsCustomer',
+    component: MyProfileAsCustomer,
     icon: Icons.user,
+    isVisible: 5 != 5,
+  },
+  {
+    name: 'MyProfileAsMakeupArtist',
+    component: MyProfileAsMakeupArtist,
+    icon: Icons.user,
+    isVisible: 5 == 5,
   },
 ];
 
@@ -68,49 +75,48 @@ export default function BottomTabNavigation(props) {
           bottom: normalize(15),
           marginHorizontal: normalize(12),
           alignItems: 'center',
-          borderTopWidth: 0,
-          paddingTop:
-            Platform.OS === 'ios'
-              ? Dimensions.get('window').height > 736
-                ? normalize(24)
-                : normalize(0)
-              : normalize(0),
-          shadowOpacity: 0.5,
           elevation: 3,
-          shadowColor: COLORS.primary,
-          shadowOffset: {
-            height: 1,
-            width: 0,
-          },
-          shadowRadius: 10,
+          // borderTopWidth: 0,
+          // paddingTop: normalize(0),
+          // shadowOpacity: 0.5,
+          // shadowColor: COLORS.primary,
+          // shadowOffset: {
+          //   height: 1,
+          //   width: 0,
+          // },
+          // shadowRadius: 10,
         },
       }}>
       {tabBarList.map((item, index) => {
         return (
-          <Tab.Screen
-            key={index}
-            name={item.name}
-            component={item.component}
-            options={{
-              tabBarIcon: ({focused}) => (
-                <View
-                  style={{
-                    ...styles.view,
-                    backgroundColor: focused ? COLORS.primary : 'rgba(0,0,0,0)',
-                  }}>
-                  <Image
-                    resizeMode="contain"
-                    source={item.icon}
+          item?.isVisible && (
+            <Tab.Screen
+              key={index}
+              name={item.name}
+              component={item.component}
+              options={{
+                tabBarIcon: ({focused}) => (
+                  <View
                     style={{
-                      height: normalize(21),
-                      width: normalize(21),
-                      tintColor: focused ? COLORS.white : '#333333',
-                    }}
-                  />
-                </View>
-              ),
-            }}
-          />
+                      ...styles.view,
+                      backgroundColor: focused
+                        ? COLORS.primary
+                        : 'rgba(0,0,0,0)',
+                    }}>
+                    <Image
+                      resizeMode="contain"
+                      source={item.icon}
+                      style={{
+                        height: normalize(21),
+                        width: normalize(21),
+                        tintColor: focused ? COLORS.white : '#333333',
+                      }}
+                    />
+                  </View>
+                ),
+              }}
+            />
+          )
         );
       })}
     </Tab.Navigator>

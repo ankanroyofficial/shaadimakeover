@@ -44,9 +44,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: COLORS.white,
-    fontSize: normalize(12),
     fontFamily: Fonts.PoppinsSemiBold,
     lineHeight: normalize(12) * 1.4,
+    fontSize: normalize(12),
     // height: normalize(15)
     // includeFontPadding:false
   },

@@ -155,7 +155,7 @@ export default function MakeupArtistDetails(props) {
       <StatusBar
         translucent
         backgroundColor={'rgba(0,0,0,0)'}
-        barStyle={'light-content'}
+        barStyle={'dark-content'}
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
