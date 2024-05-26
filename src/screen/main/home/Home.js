@@ -22,12 +22,16 @@ import Banner from '../../../components/Banner';
 import MakeupArtistComponent from '../../../components/MakeupArtistComponent';
 import PostComponent from '../../../components/PostComponent';
 import SubsciptionModal from '../subscription/SubsciptionPage';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
+  const AuthReducer = useSelector(state => state.AuthReducer);
   const [isSubscriptionModal, setIsSubscriptionModal] = useState(false);
   useEffect(() => {
     setIsSubscriptionModal(true);
   }, []);
+  console.log(AuthReducer)
+  console.log("AuthReducer")
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
