@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   status: '',
   token: '',
+  isMakeupArtist: false,
 };
 
 const AuthSlice = createSlice({
@@ -10,27 +11,12 @@ const AuthSlice = createSlice({
   initialState,
   reducers: {
     //TOKEN
-    // getTokenRequest(state, action) {
-    //   state.isLoading = true;
-    //   state.status = action.type;
-    // },
-    // getTokenSuccess(state, action) {
-    //   state.isLoading = false;
-    //   state.token = action.payload;
-    //   state.status = action.type;
-    // },
-    // getTokenFailure(state, action) {
-    //   state.isLoading = false;
-    //   state.error = action.error;
-    //   state.status = action.type;
-    // },
+    changeProfileTypeRequest(state, action) {
+      state.isMakeupArtist = action.payload;
+    },
   },
 });
 
-export const {
-  // getTokenRequest,
-  // getTokenSuccess,
-  // getTokenFailure,
-} = AuthSlice.actions;
+export const {changeProfileTypeRequest} = AuthSlice.actions;
 
 export default AuthSlice.reducer;

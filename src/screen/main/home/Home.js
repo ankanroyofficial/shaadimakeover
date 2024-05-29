@@ -30,8 +30,8 @@ export default function Home() {
   useEffect(() => {
     setIsSubscriptionModal(true);
   }, []);
-  console.log(AuthReducer)
-  console.log("AuthReducer")
+  // console.log(AuthReducer)
+  // console.log("AuthReducer")
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>

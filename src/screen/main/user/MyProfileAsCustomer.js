@@ -21,8 +21,11 @@ import HeaderWithIcon from '../../../components/header/HeaderWithIcon';
 import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {Switch} from 'react-native-switch';
+import { useDispatch } from 'react-redux';
+import { changeProfileTypeRequest } from '../../../redux/reducer/AuthReducer';
 export default function MyProfileAsCustomer() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [isMakeupArtist, setIsMakeupArtist] = useState(false);
   const detailsArr = [
     {
@@ -49,6 +52,9 @@ export default function MyProfileAsCustomer() {
       icon: Icons.makeupOutline,
       onPress: val => {
         setIsMakeupArtist(val);
+        if(val){
+          dispatch(changeProfileTypeRequest(true))
+        }
       },
     },
     {
