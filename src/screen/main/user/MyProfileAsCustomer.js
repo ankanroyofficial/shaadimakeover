@@ -21,8 +21,8 @@ import HeaderWithIcon from '../../../components/header/HeaderWithIcon';
 import {Fonts} from '../../../utils/theme/Fonts';
 import {useNavigation} from '@react-navigation/native';
 import {Switch} from 'react-native-switch';
-import { useDispatch } from 'react-redux';
-import { changeProfileTypeRequest } from '../../../redux/reducer/AuthReducer';
+import {useDispatch} from 'react-redux';
+import {changeProfileTypeRequest} from '../../../redux/reducer/AuthReducer';
 export default function MyProfileAsCustomer() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -52,8 +52,8 @@ export default function MyProfileAsCustomer() {
       icon: Icons.makeupOutline,
       onPress: val => {
         setIsMakeupArtist(val);
-        if(val){
-          dispatch(changeProfileTypeRequest(true))
+        if (val) {
+          dispatch(changeProfileTypeRequest(true));
         }
       },
     },
@@ -78,12 +78,12 @@ export default function MyProfileAsCustomer() {
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
-      <StatusBar
+      {/* <StatusBar
         backgroundColor={COLORS.white}
         barStyle={'dark-content'}
         translucent={false}
-      />
-      <HeaderWithIcon />
+      /> */}
+      <HeaderWithIcon isSubscribeButton={false} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: normalize(100)}}>

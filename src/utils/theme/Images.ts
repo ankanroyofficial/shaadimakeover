@@ -43,5 +43,12 @@ export const Images = {
 
 
 
+  video1: require('../../assets/images/forTest/video1.mp4'),
+  video2: require('../../assets/images/forTest/video2.mp4'),
+  video3: require('../../assets/images/forTest/video3.mp4'),
+  video4: require('../../assets/images/forTest/video4.mp4'),
+
+
+
 
 };

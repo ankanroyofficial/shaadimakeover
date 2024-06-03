@@ -54,4 +54,5 @@ export const Icons = {
   logo: require('../../assets/icons/logo.png'),
   cross: require('../../assets/icons/cross.png'),
   plus: require('../../assets/icons/plus.png'),
+  followers: require('../../assets/icons/followers.png'),
 };

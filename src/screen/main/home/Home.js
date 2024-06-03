@@ -22,16 +22,20 @@ import Banner from '../../../components/Banner';
 import MakeupArtistComponent from '../../../components/MakeupArtistComponent';
 import PostComponent from '../../../components/PostComponent';
 import SubsciptionModal from '../subscription/SubsciptionPage';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
 
 export default function Home() {
   const AuthReducer = useSelector(state => state.AuthReducer);
   const [isSubscriptionModal, setIsSubscriptionModal] = useState(false);
+
+  const isFocused = useIsFocused();
+
   useEffect(() => {
-    setIsSubscriptionModal(true);
-  }, []);
-  // console.log(AuthReducer)
-  // console.log("AuthReducer")
+    if (AuthReducer?.isMakeupArtist && isFocused) {
+      setIsSubscriptionModal(true);
+    }
+  }, [AuthReducer?.isMakeupArtist, isFocused]); 
   return (
     <SafeAreaView
       style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
@@ -42,7 +46,7 @@ export default function Home() {
       />
       <HeaderWithIcon
         // isUserProfileButton
-        isSubscribeButton
+        isSubscribeButton={AuthReducer?.isMakeupArtist}
         onPressSubscriptionButton={() => {
           setIsSubscriptionModal(true);
         }}

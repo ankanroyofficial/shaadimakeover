@@ -56,7 +56,7 @@ export default function HeaderWithIcon({
             </Text>
           </View>
         )}
-        {isSubscribeButton != undefined && (
+        {isSubscribeButton != undefined||!isSubscribeButton && (
           <Pressable
             disabled={onPressSubscriptionButton == undefined}
             onPress={onPressSubscriptionButton}

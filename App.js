@@ -1,6 +1,6 @@
-import { View, Text, TextInput } from 'react-native'
-import React from 'react'
-import StackNavigation from './src/navigation/StackNavigation'
+import {View, Text, TextInput} from 'react-native';
+import React from 'react';
+import StackNavigation from './src/navigation/StackNavigation';
 
 export default function App() {
   if (Text.defaultProps) {
@@ -17,7 +17,5 @@ export default function App() {
     TextInput.defaultProps = {};
     TextInput.defaultProps.allowFontScaling = false;
   }
-  return (
-  <StackNavigation/>
-  )
+  return <StackNavigation />;
 }

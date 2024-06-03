@@ -9,7 +9,7 @@ import {
   ImageBackground,
   FlatList,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {normalize} from '../../../utils/theme/Dimens';
 import {globalStyles} from '../../../utils/theme/GlobalStyle';
 import {COLORS} from '../../../utils/theme/Colors';
@@ -20,8 +20,12 @@ import {Fonts} from '../../../utils/theme/Fonts';
 import FilterTextInput from '../../../components/FilterTextInput';
 import ActiveUser from '../../../components/message/ActiveUser';
 import MakeupArtistComponent from '../../../components/MakeupArtistComponent';
+import SubsciptionModal from '../subscription/SubsciptionPage';
+import { useSelector } from 'react-redux';
 
 export default function Message() {
+  const AuthReducer = useSelector(state => state.AuthReducer);
+  const [isSubscriptionModal, setIsSubscriptionModal] = useState(false);
   const chatList = [
     {
       name: 'Aishwarya Rai Bachchan',
@@ -186,7 +190,12 @@ export default function Message() {
         translucent={false}
       />
       <View style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
-        <HeaderWithIcon />
+        <HeaderWithIcon
+          isSubscribeButton={AuthReducer?.isMakeupArtist}
+          onPressSubscriptionButton={() => {
+            setIsSubscriptionModal(true);
+          }}
+        />
         <FilterTextInput />
         <ActiveUser />
         <View
@@ -206,10 +215,10 @@ export default function Message() {
             }}>
             Connection list
           </Text>
-          <View style={{ flex: 1}}>
+          <View style={{flex: 1}}>
             <FlatList
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{paddingBottom:normalize(100)}}
+              contentContainerStyle={{paddingBottom: normalize(100)}}
               data={chatList}
               renderItem={({item, index}) => {
                 return <UserChatComponent item={item} index={index} />;
@@ -230,6 +239,10 @@ export default function Message() {
           </View>
         </View>
       </View>
+      <SubsciptionModal
+        isVisible={isSubscriptionModal}
+        onClose={() => setIsSubscriptionModal(false)}
+      />
     </SafeAreaView>
   );
 }

@@ -192,13 +192,13 @@ export default function MyProfileAsMakeupArtist() {
 
   return (
     <View style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
-      <StatusBar
+      {/* <StatusBar
         translucent
         backgroundColor={'rgba(0,0,0,0)'}
         barStyle={'light-content'}
-      />
+      /> */}
       <ScrollView
-        contentContainerStyle={{paddingBottom: normalize(100)}}
+        contentContainerStyle={{paddingBottom: normalize(10)}}
         showsVerticalScrollIndicator={false}>
         {/* Image */}
         <ImageBackground

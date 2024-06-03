@@ -16,9 +16,12 @@ import Button from '../../components/Button';
 import CustomTextInput from '../../components/CustomTextInput';
 import {Fonts} from '../../utils/theme/Fonts';
 import {Icons} from '../../utils/theme/Icons';
+import {changeProfileTypeRequest} from '../../redux/reducer/AuthReducer';
+import {useDispatch} from 'react-redux';
 
 export default function UserTypeSelection(props: Object) {
   const navigation = props.navigation;
+  const dispatch = useDispatch();
   const [whichTypeUser, setWhichTypeUser] = useState('');
   const userTypeList = [
     {
@@ -111,7 +114,14 @@ export default function UserTypeSelection(props: Object) {
             })}
           </View>
           <Button
-            onpress={() => navigation.navigate('PersonalInformation')}
+            onpress={() => {
+              dispatch(
+                changeProfileTypeRequest(
+                  whichTypeUser == 'artist' ? true : false,
+                ),
+              );
+              navigation.navigate('PersonalInformation');
+            }}
             containerStyle={{marginBottom: normalize(10)}}
             title="Continue"
           />
@@ -153,7 +163,7 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.PoppinsSemiBold,
     textAlign: 'center',
     lineHeight: normalize(16) * 1.4,
-    color:COLORS?.TextInputTextColor
+    color: COLORS?.TextInputTextColor,
   },
   smallText: {
     fontSize: normalize(11),

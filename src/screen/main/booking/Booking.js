@@ -9,7 +9,7 @@ import {
   ImageBackground,
   FlatList,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {normalize} from '../../../utils/theme/Dimens';
 import {globalStyles} from '../../../utils/theme/GlobalStyle';
 import {COLORS} from '../../../utils/theme/Colors';
@@ -21,71 +21,12 @@ import FilterTextInput from '../../../components/FilterTextInput';
 import ActiveUser from '../../../components/message/ActiveUser';
 import MakeupArtistComponent from '../../../components/MakeupArtistComponent';
 import Button from '../../../components/Button';
+import SubsciptionModal from '../subscription/SubsciptionPage';
+import { useSelector } from 'react-redux';
 
 export default function Booking() {
-  const chatList = [
-    {
-      name: 'Aishwarya Rai Bachchan',
-      msg: '',
-      image: Images.artist2,
-      unread: 5,
-    },
-    {
-      name: 'Deepika Padukone',
-      msg: '',
-      image: Images.artist1,
-      unread: 2,
-    },
-    {
-      name: 'Priyanka Chopra',
-      msg: '',
-      image: Images.user,
-      unread: 0,
-    },
-    {
-      name: 'Kangana Ranaut',
-      msg: '',
-      image: Images.user2,
-      unread: 0,
-    },
-    {
-      name: 'Madhuri Dixit',
-      msg: '',
-      image: Images.user3,
-      unread: 2,
-    },
-    {
-      name: 'Sridevi',
-      msg: '',
-      image: Images.user4,
-      unread: 99,
-    },
-    {
-      name: 'Karishma Kapoor',
-      msg: '',
-      image: Images.artist3,
-      unread: 0,
-    },
-    {
-      name: 'Vidya Balan',
-      msg: '',
-      image: Images.user,
-      unread: 20,
-    },
-    {
-      name: 'Yami Gautam',
-      msg: '',
-      image: Images.artist2,
-      unread: 10,
-    },
-    {
-      name: 'Bhumi Pednekar',
-      msg: '',
-      image: Images.user3,
-      unread: 8,
-    },
-  ];
-
+  const AuthReducer = useSelector(state => state.AuthReducer);
+  const [isSubscriptionModal, setIsSubscriptionModal] = useState(false);
   const BookingCard = ({item, index}) => {
     return (
       <View
@@ -181,7 +122,12 @@ export default function Booking() {
         translucent={false}
       />
       <View style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
-        <HeaderWithIcon />
+        <HeaderWithIcon
+         isSubscribeButton={AuthReducer?.isMakeupArtist}
+         onPressSubscriptionButton={() => {
+           setIsSubscriptionModal(true);
+         }}
+        />
         <FilterTextInput isFilterIcon />
         <View
           style={{
@@ -222,6 +168,10 @@ export default function Booking() {
           </View>
         </View>
       </View>
+      <SubsciptionModal
+        isVisible={isSubscriptionModal}
+        onClose={() => setIsSubscriptionModal(false)}
+      />
     </SafeAreaView>
   );
 }

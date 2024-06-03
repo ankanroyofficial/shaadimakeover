@@ -23,12 +23,20 @@ export default function MakeupArtistProfile() {
   const [whichTab, setWhichTab] = useState('photos');
   const useDetails = [
     {
+      type: 'followers',
+      icon: Icons.followers,
+      details: '2k followers',
+      isShow: true,
+      onPress: () => {},
+    },
+    {
       type: 'experience',
       icon: Icons.experience,
       details: '2yrs experience',
       isShow: true,
       onPress: () => {},
     },
+
     {
       type: 'email',
       icon: Icons.mail,
@@ -254,22 +262,63 @@ export default function MakeupArtistProfile() {
         </ImageBackground>
         <View
           style={{
-            height: normalize(85),
-            width: normalize(85),
-            borderRadius: normalize(85) / 2,
-            backgroundColor: 'red',
-            marginTop: -normalize(85) / 2,
-            marginLeft: globalStyles.paddingHorizantal,
-            overflow: 'hidden',
-            borderWidth: normalize(2),
-            borderColor: COLORS.white,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: globalStyles.paddingHorizantal,
           }}>
-          <Image
-            source={Images.dummyUser}
-            style={{height: '100%', width: '100%', resizeMode: 'cover'}}
-          />
-        </View>
+          {/* profile photo */}
+          <View
+            style={{
+              height: normalize(85),
+              width: normalize(85),
+              borderRadius: normalize(85) / 2,
+              backgroundColor: COLORS.grayF5,
+              marginTop: -normalize(85) / 2,
+              overflow: 'hidden',
+              borderWidth: normalize(2),
+              borderColor: COLORS.white,
+            }}>
+            <Image
+              source={Images.dummyUser}
+              style={{height: '100%', width: '100%', resizeMode: 'cover'}}
+            />
+          </View>
+          {/* *edit button */}
 
+          <View
+            style={{
+              // width: normalize(35),
+              height: normalize(27),
+              // paddingVertical:normalize(0),
+              paddingHorizontal: normalize(15),
+              backgroundColor: COLORS.primary,
+              borderRadius: normalize(20),
+              alignItems: 'center',
+              flexDirection: 'row',
+              marginTop: normalize(4),
+            }}>
+            <Image
+              source={Icons.plus}
+              style={{
+                height: normalize(11),
+                width: normalize(11),
+                resizeMode: 'contain',
+                tintColor: COLORS.white,
+              }}
+            />
+            <Text
+              numberOfLines={1}
+              style={{
+                fontSize: normalize(11.5),
+                lineHeight: normalize(11.5) * 1.4,
+                fontFamily: Fonts.PoppinsSemiBold,
+                color: COLORS.white,
+                marginLeft: normalize(4),
+              }}>
+              Follow
+            </Text>
+          </View>
+        </View>
         <View
           style={{
             marginTop: normalize(5),
@@ -287,6 +336,7 @@ export default function MakeupArtistProfile() {
             }}>
             Dipanti Roy
           </Text>
+          {/* experience */}
           <View
             style={{
               flexDirection: 'row',
