@@ -19,8 +19,7 @@ export default function HeaderWithIcon({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        // marginBottom: normalize(15),
+        alignItems: 'center', 
         marginTop: normalize(5),
       }}>
       <View
@@ -56,7 +55,7 @@ export default function HeaderWithIcon({
             </Text>
           </View>
         )}
-        {isSubscribeButton != undefined||!isSubscribeButton && (
+        {isSubscribeButton != undefined&&isSubscribeButton && (
           <Pressable
             disabled={onPressSubscriptionButton == undefined}
             onPress={onPressSubscriptionButton}

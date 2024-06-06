@@ -1,22 +1,21 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {StyleSheet, View, Image, Platform} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import {Icons} from '../utils/theme/Icons';
 import {normalize} from '../utils/theme/Dimens';
 import {COLORS} from '../utils/theme/Colors';
 import Home from '../screen/main/home/Home';
 import Message from '../screen/main/message/Message';
-import Favorite from '../screen/main/favorite/Favorite';
 import Booking from '../screen/main/booking/Booking';
-import MyProfileAsMakeupArtist from '../screen/main/user/MyProfileAsMakeupArtist';
-import MyProfileAsCustomer from '../screen/main/user/MyProfileAsCustomer';
 import Reel from '../screen/main/reel/Reel';
 import {useSelector} from 'react-redux';
 import Profile from '../screen/main/user/Profile';
+import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigation(props) {
+  const navigation = useNavigation();
   const AuthReducer = useSelector(state => state.AuthReducer);
   const tabBarList = [
     {
@@ -31,13 +30,6 @@ export default function BottomTabNavigation(props) {
       icon: Icons.calender,
       isVisible: true,
     },
-    // {
-    //   name: 'Favorite',
-    //   component: Favorite,
-    //   icon: Icons.tabFav,
-    // isVisible:true
-    // },
-
     {
       name: 'Reel',
       component: Reel,
@@ -57,19 +49,6 @@ export default function BottomTabNavigation(props) {
       icon: Icons.user,
       isVisible: true,
     },
-
-    // {
-    //   name: 'MyProfileAsCustomer',
-    //   component: MyProfileAsCustomer,
-    //   icon: Icons.user,
-    //   isVisible: !AuthReducer?.isMakeupArtist,
-    // },
-    // {
-    //   name: 'MyProfileAsMakeupArtist',
-    //   component: MyProfileAsMakeupArtist,
-    //   icon: Icons.user,
-    //   isVisible: AuthReducer?.isMakeupArtist,
-    // },
   ];
   return (
     <Tab.Navigator
@@ -78,27 +57,11 @@ export default function BottomTabNavigation(props) {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        // unmountOnBlur: true,
         tabBarStyle: {
-          // position: 'absolute',
           height: normalize(57),
           backgroundColor: COLORS.white,
           width: '100%',
-          // borderTopRightRadius: normalize(20),
-          // borderTopLeftRadius: normalize(20),
-          // bottom: normalize(0),
-          // marginHorizontal: normalize(12),
           alignItems: 'center',
-          // elevation: 3,
-          // borderTopWidth: 0,
-          // paddingTop: normalize(0),
-          // shadowOpacity: 0.5,
-          // shadowColor: COLORS.primary,
-          // shadowOffset: {
-          //   height: 1,
-          //   width: 0,
-          // },
-          // shadowRadius: 10,
           borderTopWidth: 0,
         },
       }}>

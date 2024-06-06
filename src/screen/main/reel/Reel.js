@@ -12,6 +12,8 @@ import {Fonts} from '../../../utils/theme/Fonts';
 import Video from 'react-native-video';
 import {Images} from '../../../utils/theme/Images';
 export default function Reel() {
+  const [pageHeight, setPageHeight] = useState(0);
+  const [pageWidth, setPageWidth] = useState(0);
   const videoArr = [
     {
       video: Images.video1,
@@ -38,14 +40,14 @@ export default function Reel() {
     const [isShowLongText, setIsShowLongText] = useState(false);
     return (
       <View
-        style={[
-          styles.mainContainer,
-          {
-            position: 'absolute',
-            backgroundColor: 'rgba(0,0,0,0)',
-            padding: globalStyles.paddingHorizantal,
-          },
-        ]}>
+        style={{
+          height: pageHeight,
+          width: pageWidth,
+          position: 'absolute',
+          backgroundColor: 'rgba(0,0,0,0)',
+          paddingHorizontal: globalStyles.paddingHorizantal,
+          paddingBottom: normalize(10),
+        }}>
         <View style={{flex: 1}}></View>
         {/* name description */}
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -93,9 +95,15 @@ export default function Reel() {
     const activeIndex = Math.round(event / (windowHeight - normalize(57)));
     setCurrentIndex(activeIndex);
   };
-  console.log(currentIndex);
+
   return (
-    <View style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
+    <View
+      onLayout={event => {
+        const {x, y, width, height} = event.nativeEvent.layout;
+        setPageHeight(height);
+        setPageWidth(width);
+      }}
+      style={{flex: 1, backgroundColor: COLORS.pageBackgroundWhite}}>
       <ScrollView
         pagingEnabled
         showsVerticalScrollIndicator={false}
@@ -106,50 +114,28 @@ export default function Reel() {
           return (
             <View
               key={index}
-              style={[
-                styles.mainContainer,
-                {
-                  backgroundColor: 'black',
-                },
-              ]}>
+              style={{
+                height: pageHeight,
+                width: pageWidth,
+                backgroundColor: 'black',
+              }}>
               <Video
                 paused={currentIndex != index}
                 repeat
+                resizeMode='cover'
                 source={item?.video}
-                style={{height: '100%', width: '100%', resizeMode: 'cover'}}
+                style={{height: '100%', width: '100%'}}
               />
               <AbsoluteScreen item={item} />
             </View>
           );
         })}
       </ScrollView>
-      {/* back camera */}
-      <View
-        style={{
-          flexDirection: 'row',
-          height: normalize(30),
-          width: '100%',
-          justifyContent: 'space-between',
-          position: 'absolute',
-          paddingHorizontal: globalStyles.paddingHorizantal,
-          top: normalize(15),
-        }}>
-        {/* back */}
-        <View style={styles.icon}>
-          <Image source={Icons.back} style={styles.iconImage} />
-        </View>
-
-        {/* camera */}
-        <View style={styles.icon}>
-          <Image source={Icons.camera} style={styles.iconImage} />
-        </View>
-      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {height: windowHeight - normalize(57), width: screenWidth},
   icon: {
     height: normalize(30),
     width: normalize(30),
@@ -158,3 +144,24 @@ const styles = StyleSheet.create({
   },
   iconImage: {height: '75%', width: '75%', resizeMode: 'contain'},
 });
+
+// {/* back camera */}
+// <View
+//   style={{
+//     flexDirection: 'row',
+//     height: normalize(30),
+//     width: '100%',
+//     justifyContent: 'space-between',
+//     position: 'absolute',
+//     paddingHorizontal: globalStyles.paddingHorizantal,
+//     top: normalize(15),
+//   }}>
+//   {/* back */}
+//   <View style={styles.icon}>
+//     <Image source={Icons.back} style={styles.iconImage} />
+//   </View>
+//   {/* camera */}
+//   <View style={styles.icon}>
+//     <Image source={Icons.camera} style={styles.iconImage} />
+//   </View>
+// </View>
