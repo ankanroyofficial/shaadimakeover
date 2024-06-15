@@ -6,12 +6,14 @@ import {Images} from '../../utils/theme/Images';
 import {COLORS} from '../../utils/theme/Colors';
 import {Icons} from '../../utils/theme/Icons';
 import {Fonts} from '../../utils/theme/Fonts';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HeaderWithIcon({
   isUserProfileButton,
   isSubscribeButton,
   onPressSubscriptionButton,
 }) {
+  const navigation=useNavigation()
   return (
     <View
       style={{
@@ -81,7 +83,10 @@ export default function HeaderWithIcon({
             </Text>
           </Pressable>
         )}
-        <View
+        <Pressable
+        onPress={()=>{
+          navigation.navigate("Notification")
+        }}
           style={{
             height: normalize(30),
             width: normalize(30),
@@ -94,7 +99,7 @@ export default function HeaderWithIcon({
             source={Icons.notification}
             style={{height: '55%', width: '55%', resizeMode: 'contain'}}
           />
-        </View>
+        </Pressable>
       </View>
     </View>
   );

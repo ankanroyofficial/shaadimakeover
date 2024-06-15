@@ -6,6 +6,7 @@ import {
   Image,
   Pressable,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import React, {Fragment, useState} from 'react';
 import {normalize, screenHeight} from '../../../utils/theme/Dimens';
@@ -231,6 +232,9 @@ export default function MyProfileAsMakeupArtist() {
               />
             </Pressable>
             <Pressable
+              onPress={() => {
+                navigation.navigate('Notification');
+              }}
               style={{
                 height: normalize(25),
                 width: normalize(25),
@@ -277,7 +281,10 @@ export default function MyProfileAsMakeupArtist() {
           </View>
           {/* *edit button */}
 
-          <View
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MakeupArtistEditProfile');
+            }}
             style={{
               // width: normalize(35),
               height: normalize(27),
@@ -309,7 +316,7 @@ export default function MyProfileAsMakeupArtist() {
               }}>
               Edit Profile
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View

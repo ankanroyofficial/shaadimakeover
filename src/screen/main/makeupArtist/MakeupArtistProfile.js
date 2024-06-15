@@ -239,6 +239,9 @@ export default function MakeupArtistProfile() {
               />
             </Pressable>
             <Pressable
+             onPress={()=>{
+              navigation.navigate("Notification")
+            }}
               style={{
                 height: normalize(25),
                 width: normalize(25),

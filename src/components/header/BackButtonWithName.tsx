@@ -20,7 +20,7 @@ export default function BackButtonWithName({title}: {title: string}) {
         paddingHorizontal: globalStyles.paddingHorizantal,
         paddingVertical: normalize(8),
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'center', 
       }}>
       <Pressable
         onPress={() => {
@@ -42,8 +42,8 @@ export default function BackButtonWithName({title}: {title: string}) {
       </Pressable>
       <Text
         style={{
-          fontSize: normalize(11.5),
-          lineHeight: normalize(11.5) * 1.4,
+          fontSize: normalize(12.5),
+          lineHeight: normalize(12.5) * 1.4,
           fontFamily: Fonts.PoppinsMedium,
           color: COLORS.textColor,
           marginBottom: normalize(1),
