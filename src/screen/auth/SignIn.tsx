@@ -1,5 +1,5 @@
 import {View, Text, Image, TextInput, StyleSheet} from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {normalize} from '../../utils/theme/Dimens';
 import {Images} from '../../utils/theme/Images';
 import BridalImageBackgroundComponent from '../../components/BridalImageBackgroundComponent';
@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 import CustomTextInput from '../../components/CustomTextInput';
 import {Fonts} from '../../utils/theme/Fonts';
 import {Icons} from '../../utils/theme/Icons';
-
+import Geolocation from '@react-native-community/geolocation';
 export default function SignIn(props: Object) {
   const navigation = props.navigation;
   const socialLoginList = [
@@ -24,6 +24,12 @@ export default function SignIn(props: Object) {
       onPress: () => {},
     },
   ];
+
+
+  // useEffect(()=>{
+  //   Geolocation.getCurrentPosition(info => console.log(info));
+  // },[])
+
   return (
     <BridalImageBackgroundComponent>
       <View
@@ -63,7 +69,8 @@ export default function SignIn(props: Object) {
           />
           <Button
             onpress={() => {
-              navigation.navigate('BottomTabNavigation');
+              Geolocation.getCurrentPosition(info => console.log(info));
+              // navigation.navigate('BottomTabNavigation');
             }}
             containerStyle={{marginBottom: normalize(10)}}
             title="Continue"
