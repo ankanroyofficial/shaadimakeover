@@ -218,7 +218,7 @@ export default function MakeupArtistProfile() {
           }}>
           <View
             style={{
-              marginTop: StatusBar.currentHeight + normalize(10),
+              marginTop: StatusBar.currentHeight + normalize(5),
               marginHorizontal: globalStyles.paddingHorizantal,
               flexDirection: 'row',
               justifyContent: 'space-between',

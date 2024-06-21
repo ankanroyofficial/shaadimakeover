@@ -111,6 +111,17 @@ export default function MakeupArtistEditProfile() {
               textinputStyle={{width: '100%', marginTop: normalize(10)}}
               placeholder="Enter Experience"
             />
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between',marginTop: normalize(10)}}>
+              <CustomTextInput
+                textinputStyle={{width: '48%'}}
+                placeholder="Opening Time"
+              />
+              <CustomTextInput
+                textinputStyle={{width: '48%'}}
+                placeholder="Closeing Time"
+              />
+            </View>
             <CustomTextInput
               textinputStyle={{width: '100%', marginTop: normalize(10)}}
               placeholder="Enter Country"
