@@ -4,8 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SplashScreen from '../screen/intro/SplashScreen';
 import SignIn from '../screen/auth/SignIn';
 import OtpVerification from '../screen/auth/OtpVerification';
-import SignUp from '../screen/auth/SignUp';
-import LocationAccess from '../screen/auth/LocationAccess';
+import SignUp from '../screen/auth/SignUp'; 
 import PersonalInformation from '../screen/auth/PersonalInformation';
 import UserTypeSelection from '../screen/auth/UserTypeSelection';
 import BottomTabNavigation from './BottomTabNavigation';
@@ -22,8 +21,7 @@ export default function StackNavigation() {
   const Stack = createNativeStackNavigator();
 
   const stackArr = {
-    SplashScreen: SplashScreen,
-    LocationAccess: LocationAccess,
+    SplashScreen: SplashScreen, 
     SignIn: SignIn,
     SignUp: SignUp,
     PersonalInformation: PersonalInformation,

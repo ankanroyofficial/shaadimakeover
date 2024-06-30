@@ -10,6 +10,7 @@ import React, {useEffect} from 'react';
 import {Images} from '../../utils/theme/Images';
 import {COLORS} from '../../utils/theme/Colors';
 import {normalize} from '../../utils/theme/Dimens';
+import LocationAccessModal from '../auth/LocationAccessModal';
 
 export default function SplashScreen(props: any) {
   const navigation = props.navigation;
@@ -22,9 +23,9 @@ export default function SplashScreen(props: any) {
     }
   };
 
-  useEffect(() => {
-    setTimeout(navigateToNextPage, 2500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(navigateToNextPage, 2500);
+  // }, []);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -49,6 +50,7 @@ export default function SplashScreen(props: any) {
           />
         </View>
       </ImageBackground>
+      <LocationAccessModal/>
     </SafeAreaView>
   );
 }

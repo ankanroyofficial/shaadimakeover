@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 import CustomTextInput from '../../components/CustomTextInput';
 import {Fonts} from '../../utils/theme/Fonts';
 import {Icons} from '../../utils/theme/Icons';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function PersonalInformation(props: Object) {
   const navigation = props.navigation;
@@ -47,7 +47,7 @@ export default function PersonalInformation(props: Object) {
           </View>
         </View>
         {/* bottom */}
-        <View style={styles.bottomContainer}> 
+        <View style={styles.bottomContainer}>
           <Text style={styles.heading}>Personal Information</Text>
           <Text
             style={{
@@ -68,10 +68,6 @@ export default function PersonalInformation(props: Object) {
             />
           </View>
 
-          {/* <CustomTextInput
-            textinputStyle={{marginBottom: normalize(14)}}
-            placeholder={'Account Type'}
-          /> */}
           <CustomTextInput
             textinputStyle={{marginBottom: normalize(14)}}
             placeholder={'Enter phone number'}
@@ -80,13 +76,17 @@ export default function PersonalInformation(props: Object) {
             textinputStyle={{marginBottom: normalize(14)}}
             placeholder={'Enter email address'}
           />
+          <CustomTextInput
+            textinputStyle={{marginBottom: normalize(14)}}
+            placeholder={'Enter Location'}
+          />
           <Button
             onpress={() => {
               navigation.navigate('BottomTabNavigation');
             }}
             containerStyle={{marginBottom: normalize(10)}}
             title="Register Now"
-          /> 
+          />
         </View>
       </View>
     </BridalImageBackgroundComponent>
@@ -127,9 +127,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.PoppinsSemiBold,
     textAlign: 'center',
     lineHeight: normalize(16) * 1.4,
-    color:COLORS?.TextInputTextColor
+    color: COLORS?.TextInputTextColor,
   },
   smallText: {
+    color:COLORS.textColor,
     fontSize: normalize(11),
     lineHeight: normalize(11) * 1.4,
     fontFamily: Fonts.PoppinsRegular,

@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     color:COLORS?.TextInputTextColor
   },
   smallText: {
+    color:COLORS.textColor,
     fontSize: normalize(11),
     lineHeight: normalize(11) * 1.4,
     fontFamily: Fonts.PoppinsRegular,
